@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>服务器处理中</title>
+</head>
+
+<body>
+
+    <h1><strong>服务器正在处理请求，请求结束，将直接跳转</strong></h1>
+    <p id="demo"></p>
+    <h1 id="show" name="n1"></h1>
+    <img scr="https://qn.xieqifei.com/tipps.png" alt="tipps">
+    <script>
+        var xhr = new XMLHttpRequest();
+
+        xhr.onload = function () {
+            // 输出接收到的文字数据
+            window.location.href = xhr.responseText;
+        }
+
+        xhr.onerror = function () {
+            document.getElementById("demo").innerHTML = "请求出错";
+        }
+
+        // 发送异步 GET 请求
+        // xhr.open("GET", "", true);
+        // xhr.send();
+        function countdown() {
+            var n = 60;
+            var interval;
+            if (n > 0) {
+                interval = setInterval(() => {
+                    n--;
+                    document.getElementById("show").innerHTML = n;
+                    if (n <= 0) {
+                        clearInterval(interval)
+                    }
+                }, 1000)
+            }
+
+        }
+        countdown();
+    </script>
+</body>
+
+</html>
